@@ -7,11 +7,11 @@
     <title>Home page</title>
 </head>
 <body>
-    <h1>I am The homepage of this Application.</h1>
-    <h2>{{ name }} is from {{ place }}.</h2>
     <h1>Below is the form. Please input your sentence here below.</h1>
-    <form action="/Remove Punctuation" method="get">
+    <form action="/analyze" method="get">
     <textarea name='text' cols="30" rows="10" style="width: 741px; height: 137px;"></textarea>
+    <br>    
+    <input type="checkbox" name="removePunc"> Remove Punctuations
     <br>       
     <button type="submit">Analyze Text</button>
     </form>

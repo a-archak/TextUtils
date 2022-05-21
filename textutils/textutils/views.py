@@ -1,27 +1,29 @@
 # I created this file - Archak 
 from email.policy import default
+from string import punctuation
+from sys import displayhook
 from django.http import HttpResponse
 from django.shortcuts import render
     
 #STARTING CODE FOR TEXTUTILS PROJECT
 def index(request):
-    params = {'name':'Archak', 'place':'Hetauda'}
-    return render(request, "index.html", params)
+    return render(request, "index.html")
 
-def removePunc(request):
+def analyze(request):
     #getting text from text field and printing it in Remove Punctuation Page
     displayText=request.GET.get('text', 'default')
-    print(displayText)
+    #getting checkbox input
+    displayPunc=request.GET.get('removePunc', 'off')
+    #removing punctuations in user entered text
+    if displayPunc == "on":
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+        analyzed = ""
+        for char in displayText:
+            if char not in punctuations:
+                analyzed = analyzed + char
+        params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)
+
+    else:
+        return HttpResponse('Error')
     return HttpResponse("Remove Punctuation <a href='/'> Back</a>")
-
-def capFirst(request):
-    return HttpResponse("Capitalize First <a href='/'> Back</a>")
-
-def newLineRemove(request):
-    return HttpResponse("New Line Remover <a href='/'> Back</a>")
-
-def spaceRemove(request):
-    return HttpResponse("Space Remove <a href='/'> Back</a>")
-
-def charCount(request):
-    return HttpResponse("Character Count <a href='/'> Back</a>")
