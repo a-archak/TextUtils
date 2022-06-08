@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS=[
+    "/django learning/textutils/textutils/static"   
+]
 
 # Application definition
 
