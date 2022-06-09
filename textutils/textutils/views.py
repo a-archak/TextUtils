@@ -11,13 +11,13 @@ def index(request):
 
 def analyze(request):
     #getting text from text field and printing it in Remove Punctuation Page
-    displayText=request.GET.get('text', 'default')
+    displayText=request.POST.get('text', 'default')
     #getting checkbox input
-    removePunc=request.GET.get('removePunc', 'off')
-    uppercase=request.GET.get('uppercase', 'off')
-    newlineremover=request.GET.get('newlineremover', 'off')
-    extraspaceremover=request.GET.get('extraspaceremover', 'off')
-    charactercounter=request.GET.get('charactercounter', 'off')
+    removePunc=request.POST.get('removePunc', 'off')
+    uppercase=request.POST.get('uppercase', 'off')
+    newlineremover=request.POST.get('newlineremover', 'off')
+    extraspaceremover=request.POST.get('extraspaceremover', 'off')
+    charactercounter=request.POST.get('charactercounter', 'off')
     # declaring required variables
     results = ""
     purpose = ""
@@ -49,7 +49,7 @@ def analyze(request):
         analyzed = ""
         # iterating through every letters, removing new lines and merging them
         for char in displayText:
-            if char != "\n":
+            if char != "\n" and char != "\r":
                 analyzed = analyzed + char
         # modifying parameters
         purpose += " | New Line Removed | "

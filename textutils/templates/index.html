@@ -53,7 +53,7 @@
     <div class="container">
 
         <!-- form for entering texts and textutils program to run -->
-        <form action='/analyze' method='get'>
+        <form action='/analyze' method='post'> {% csrf_token %}
 
             <div class="form-group">
                 <h3 for="exampleFormControlTextarea1">Enter your text here!!!</h3>
